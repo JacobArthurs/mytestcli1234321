@@ -5,6 +5,7 @@ on:
       - "v*"
 permissions:
   contents: write
+  id-token: write
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -21,8 +22,31 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: jacobarthurs/shipbin@v0
+        with:
+          registry: npm
+          name: mytestcli1234321
+          org: 98c09f9d-8bc1-4733-96db-5850e4c6a040
+          artifacts: |
+            linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
+            linux/arm64:./dist/mytestcli1234321_linux_arm64/mytestcli1234321
+            darwin/amd64:./dist/mytestcli1234321_darwin_amd64_v1/mytestcli1234321
+            darwin/arm64:./dist/mytestcli1234321_darwin_arm64/mytestcli1234321
+            windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
+            windows/arm64:./dist/mytestcli1234321_windows_arm64/mytestcli1234321.exe
+      - uses: jacobarthurs/shipbin@v0
+        with:
+          registry: pypi
+          name: mytestcli1234321
+          artifacts: |
+            linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
+            linux/arm64:./dist/mytestcli1234321_linux_arm64/mytestcli1234321
+            darwin/amd64:./dist/mytestcli1234321_darwin_amd64_v1/mytestcli1234321
+            darwin/arm64:./dist/mytestcli1234321_darwin_arm64/mytestcli1234321
+            windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
+            windows/arm64:./dist/mytestcli1234321_windows_arm64/mytestcli1234321.exe
       - name: Update Go module proxy
-        run: GOPROXY=https://proxy.golang.org go list -m github.com/jacobarthurs/shipbin@${GITHUB_REF_NAME}
+        run: GOPROXY=https://proxy.golang.org go list -m github.com/jacobarthurs/mytestcli1234321@${GITHUB_REF_NAME}
       - name: Update floating major tag
         run: |
           MAJOR=$(echo "${GITHUB_REF_NAME}" | cut -d. -f1)

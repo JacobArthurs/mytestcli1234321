@@ -30,11 +30,11 @@ jobs:
           provenance: false
           artifacts: |
             linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
-            linux/arm64:./dist/mytestcli1234321_linux_arm64/mytestcli1234321
+            linux/arm64:./dist/mytestcli1234321_linux_arm64_v8.0/mytestcli1234321
             darwin/amd64:./dist/mytestcli1234321_darwin_amd64_v1/mytestcli1234321
-            darwin/arm64:./dist/mytestcli1234321_darwin_arm64/mytestcli1234321
+            darwin/arm64:./dist/mytestcli1234321_darwin_arm64_v8.0/mytestcli1234321
             windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
-            windows/arm64:./dist/mytestcli1234321_windows_arm64/mytestcli1234321.exe
+            windows/arm64:./dist/mytestcli1234321_windows_arm64_v8.0/mytestcli1234321.exe
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: jacobarthurs/shipbin@v0
@@ -43,11 +43,11 @@ jobs:
           name: mytestcli1234321
           artifacts: |
             linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
-            linux/arm64:./dist/mytestcli1234321_linux_arm64/mytestcli1234321
+            linux/arm64:./dist/mytestcli1234321_linux_arm64_v8.0/mytestcli1234321
             darwin/amd64:./dist/mytestcli1234321_darwin_amd64_v1/mytestcli1234321
-            darwin/arm64:./dist/mytestcli1234321_darwin_arm64/mytestcli1234321
+            darwin/arm64:./dist/mytestcli1234321_darwin_arm64_v8.0/mytestcli1234321
             windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
-            windows/arm64:./dist/mytestcli1234321_windows_arm64/mytestcli1234321.exe
+            windows/arm64:./dist/mytestcli1234321_windows_arm64_v8.0/mytestcli1234321.exe
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
       - name: Update Go module proxy

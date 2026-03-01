@@ -28,6 +28,7 @@ jobs:
           name: mytestcli1234321
           license: MIT
           summary: My test CLI tool for testing shipbin
+          no-readme: true
           org: 98c09f9d-8bc1-4733-96db-5850e4c6a040
           artifacts: |
             linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
@@ -41,6 +42,7 @@ jobs:
           name: mytestcli1234321
           license: MIT
           summary: My test CLI tool for testing shipbin
+          no-readme: true
           artifacts: |
             linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
             linux/arm64:./dist/mytestcli1234321_linux_arm64_v8.0/mytestcli1234321

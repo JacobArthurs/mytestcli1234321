@@ -50,8 +50,6 @@ jobs:
             windows/arm64:./dist/mytestcli1234321_windows_arm64_v8.0/mytestcli1234321.exe
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-      - name: Update Go module proxy
-        run: GOPROXY=https://proxy.golang.org go list -m github.com/jacobarthurs/mytestcli1234321@${GITHUB_REF_NAME}
       - name: Update floating major tag
         run: |
           MAJOR=$(echo "${GITHUB_REF_NAME}" | cut -d. -f1)

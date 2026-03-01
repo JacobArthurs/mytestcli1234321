@@ -27,16 +27,12 @@ jobs:
           registry: npm
           name: mytestcli1234321
           org: 98c09f9d-8bc1-4733-96db-5850e4c6a040
-          provenance: false
           artifacts: |
             linux/amd64:./dist/mytestcli1234321_linux_amd64_v1/mytestcli1234321
             linux/arm64:./dist/mytestcli1234321_linux_arm64_v8.0/mytestcli1234321
             darwin/amd64:./dist/mytestcli1234321_darwin_amd64_v1/mytestcli1234321
             darwin/arm64:./dist/mytestcli1234321_darwin_arm64_v8.0/mytestcli1234321
             windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
-            windows/arm64:./dist/mytestcli1234321_windows_arm64_v8.0/mytestcli1234321.exe
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: jacobarthurs/shipbin@v0
         with:
           registry: pypi
@@ -48,8 +44,6 @@ jobs:
             darwin/arm64:./dist/mytestcli1234321_darwin_arm64_v8.0/mytestcli1234321
             windows/amd64:./dist/mytestcli1234321_windows_amd64_v1/mytestcli1234321.exe
             windows/arm64:./dist/mytestcli1234321_windows_arm64_v8.0/mytestcli1234321.exe
-        env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
       - name: Update floating major tag
         run: |
           MAJOR=$(echo "${GITHUB_REF_NAME}" | cut -d. -f1)

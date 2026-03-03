@@ -1,0 +1,31 @@
+name: Test Darwin
+
+on:
+  workflow_dispatch:
+
+jobs:
+  npm:
+    strategy:
+      matrix:
+        include:
+          - os: macos-13      # darwin/amd64
+          - os: macos-latest  # darwin/arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Test npm
+        run: |
+          npm install -g mytestcli1234321
+          mytestcli1234321 --version
+
+  pypi:
+    strategy:
+      matrix:
+        include:
+          - os: macos-13      # darwin/amd64
+          - os: macos-latest  # darwin/arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Test PyPI
+        run: |
+          pip3 install --break-system-packages mytestcli1234321
+          mytestcli1234321 --version

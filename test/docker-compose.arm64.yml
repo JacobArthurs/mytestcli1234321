@@ -1,0 +1,10 @@
+services:
+  npm:
+    image: node:lts-slim
+    platform: linux/arm64
+    command: sh -c "npm install -g mytestcli1234321 && mytestcli1234321 --version"
+
+  pypi:
+    image: python:3-slim
+    platform: linux/arm64
+    command: sh -c "pip install mytestcli1234321 && mytestcli1234321 --version"

@@ -33,5 +33,6 @@ jobs:
     steps:
       - name: Test PyPI darwin/amd64 (Rosetta)
         run: |
-          arch -x86_64 pip3 install --break-system-packages mytestcli1234321
-          arch -x86_64 mytestcli1234321 --version
+          pip3 download --platform macosx_10_12_x86_64 --only-binary :all: --no-deps -d /tmp/wheel mytestcli1234321
+          cd /tmp/wheel && unzip -q *.whl
+          arch -x86_64 */bin/mytestcli1234321 --version

@@ -4,28 +4,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  npm:
-    strategy:
-      matrix:
-        include:
-          - os: macos-13      # darwin/amd64
-          - os: macos-latest  # darwin/arm64
-    runs-on: ${{ matrix.os }}
+  npm-arm64:
+    runs-on: macos-latest
     steps:
-      - name: Test npm
+      - name: Test npm darwin/arm64
         run: |
           npm install -g mytestcli1234321
           mytestcli1234321 --version
 
-  pypi:
-    strategy:
-      matrix:
-        include:
-          - os: macos-13      # darwin/amd64
-          - os: macos-latest  # darwin/arm64
-    runs-on: ${{ matrix.os }}
+  npm-amd64:
+    runs-on: macos-latest
     steps:
-      - name: Test PyPI
+      - name: Test npm darwin/amd64 (Rosetta)
+        run: |
+          arch -x86_64 npm install -g mytestcli1234321
+          arch -x86_64 mytestcli1234321 --version
+
+  pypi-arm64:
+    runs-on: macos-latest
+    steps:
+      - name: Test PyPI darwin/arm64
         run: |
           pip3 install --break-system-packages mytestcli1234321
           mytestcli1234321 --version
+
+  pypi-amd64:
+    runs-on: macos-latest
+    steps:
+      - name: Test PyPI darwin/amd64 (Rosetta)
+        run: |
+          arch -x86_64 pip3 install --break-system-packages mytestcli1234321
+          arch -x86_64 mytestcli1234321 --version
